@@ -19,7 +19,7 @@ class CreateIgdatasTable extends Migration
             $table->string('query_label');
             $table->string('user');
             $table->text('comment');
-            $table->string('comment_count');
+            $table->integer('comment_count');
             $table->string('shortcode');
             $table->timestamps();
         });

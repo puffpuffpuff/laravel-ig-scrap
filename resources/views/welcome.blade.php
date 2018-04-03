@@ -80,16 +80,25 @@
             <div class="content">
                 
                 <div>
-              
+                    {{ Form::open(['url' => 'gethashtag', 'method' => 'post']) }}
                         {{ Form::text('_hastag','',['placeholder' => 'Hashtag','id' => 'hashtag'])}}
                         {{ Form::submit('Submit', array('id' => 'submit')) }}
-                        <br><br>
-                        {{ Form::textarea('_data','',['placeholder' => 'data','id' => 'dataig'])}}
-                        <br>
-                        {{ Form::submit('Submit', array('id' => 'save')) }}
-                    @if(!empty($datasuccess))
-                        {{$datasuccess}}
+                    {{ Form::close() }}
+                    
+                    @if(@$label)                    
+                        
+                        @foreach(@$label as $key=>$value)
+                        <div>
+                            <span>{{$value->query_label}}</span>
+                            {{ Form::open(['url' => 'getcomment/'.$value->query_label, 'method' => 'post']) }}
+                                {{ Form::submit('Get Comment', array('id' => 'submit',@$hasComment[$value->query_label])) }}
+                            {{ Form::close() }}
+                        </div>
+                            
+                        @endforeach
                     @endif
+                    <br>
+                    
                 </div>
             </div>
         </div>
@@ -97,7 +106,7 @@
         <script type="text/javascript">
         var a ;
         var token = $('meta[name="csrf-token"]').attr('content');
-        $('#submit').on('click',function(){
+        /*$('#submit').on('click',function(){
             addToCartRequest = $.ajax("https://www.instagram.com/explore/tags/"+$('#hashtag').val()+"/?__a=1", {
                 type: 'GET',
                 success: function(result) { 
@@ -111,7 +120,8 @@
         });
         $('#save').on('click',function(){
             var _val = JSON.parse($('#dataig').val());
-            _val.query = $('#hashtag').val();
+            _val.searchval = $('#hashtag').val();
+            console.log(_val);
             sendData(_val);
         })
         
@@ -134,7 +144,7 @@
              });
              return;
         }
-       
+        */
         </script>
     </body>
 </html>

@@ -12,6 +12,7 @@ class comment extends Model
         $check = comment::where('comment_id',$request->comment_id)->first();
         if(empty($check)){
             $data->comment_id = $request->comment_id;
+            $data->query_label = $request->query_label;
             $data->comment_owner = $request->comment_owner;
             $data->comment_shortcode = $request->comment_shortcode;
             $data->comment = $request->comment;

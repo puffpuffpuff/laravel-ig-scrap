@@ -18,3 +18,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/gethashtag','IndexController@getHashtag');
+Route::post('/getcomment/{label}','IndexController@getComment');
+
+//Route::get('/getcomment','IndexController@getAllComment');
