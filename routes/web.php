@@ -19,5 +19,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/gethashtag','IndexController@getHashtag');
 Route::post('/getcomment/{label}','IndexController@getComment');
+Route::get('/resumegetcomment/{label}/{shortcode}','IndexController@resumeLimitOfComment');
 
 //Route::get('/getcomment','IndexController@getAllComment');
